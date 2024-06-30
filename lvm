@@ -1,0 +1,36 @@
+Configure 
+add 1 vm, ram 4gb, hdd 10,(with 2 extra hdd 10gb )
+-su
+-lsblk
+
+-pvcreate /dev/nvme0n2 /dev/nvme0n3 (replace hdd name accordingly)
+physical volume created
+-pvdisplay
+
+-vgcreate HPCSA /dev/nvme0n2 /dev/nvme0n3
+volume created
+-vgs
+
+-lvcreate -n hpcsa_lab --size 1G HPCSA
+logical volume created
+-lvs
+
+-fdisk /dev/mapper/HPCSA-hpcsa_lab(optional if asked)
+
+-mkfs.ext4 /dev/mapper/HPCSA-hpcsa_lab
+-lsblk
+
+-mkdirlab
+-mount /dev/mapper/HPCSA-hpcsa_lab lab
+-lvextend -L +2G /dev/mapper/HPCSA-hpcsa_lab
+-resize2fs /dev/mapper/HPCSA-hpcsa_lab
+-lvcreate -L 1GB -s -n hpcsa_lab_snap /dev/mapper/HPCSA-hpcsa_lab 
+Logical volume "hpcsa_lab_snap" created.
+---
+-lvconvert --merge /dev/mapper/HPCSA-hpcsa_lab_snap
+will merge the snapshot back into its origin volume
+---
+-lsblk
+for output
+
+
