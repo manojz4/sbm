@@ -26,7 +26,7 @@ $ mkdir /mnt/raid10
 $ mount /dev/md0p1 /mnt/raid10/
 $ blkid
 $ vim /etc/fstab
-  (do if required)
+  (enter last blkid and replace )
 	UUID="d7ae0241-b948-4f64-af38-35d4486426c2" /mnt/raid10           ext4    defaults        0 0
 
 
