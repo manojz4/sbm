@@ -1,5 +1,5 @@
 Configure 
-add 1 vm, ram 4gb, hdd 10,(with 2 extra hdd 10gb )
+add 1 vm(centos 7), ram 4gb, hdd 10,(with 2 extra hdd 10gb )
 -su
 -lsblk
 
