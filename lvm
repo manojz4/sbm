@@ -20,7 +20,7 @@ logical volume created
 -mkfs.ext4 /dev/mapper/HPCSA-hpcsa_lab
 -lsblk
 
--mkdirlab
+-mkdir lab
 -mount /dev/mapper/HPCSA-hpcsa_lab lab
 -lvextend -L +2G /dev/mapper/HPCSA-hpcsa_lab
 -resize2fs /dev/mapper/HPCSA-hpcsa_lab
