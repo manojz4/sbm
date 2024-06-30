@@ -1,5 +1,6 @@
 config
-same as raid 0
+Create vm  
+attached 2 hdd 20GB 
 --
 lsblk
 ip a
