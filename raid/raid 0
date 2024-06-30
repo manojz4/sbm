@@ -1,6 +1,6 @@
 configuration
 Create vm  
-attached 2 hdd 20GB 
+attached 2 hdd 20GB (total 3)
 -------
 lsblk
 yum clean all
