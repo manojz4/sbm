@@ -1,0 +1,36 @@
+vm 
+1 CPU
+1 GB R
+CENT0S 7
+(Attach extra 4 hard disks (20gb) per hard disk)  (total 5 hard disk)
+
+$ su
+$ lsblk
+$ yum clean all
+$ yum install mdadm -y
+$ mdadm --create --verbose /dev/md0 --level=10 --raid-devices=4 /dev/sdb /dev/sdc /dev/sdd /dev/sde
+$ lsblk
+$ mdadm --detail /dev/md0 
+$ fdisk -l 
+$ fdisk /dev/md0
+n
+p
+enter
+enter
+enter
+w
+$ fdisk -l
+$ mkfs.ext4 /dev/md0p1
+$ lsblk
+$ mkdir /mnt/raid10
+$ mount /dev/md0p1 /mnt/raid10/
+$ blkid
+$ vim /etc/fstab
+  (do if required)
+	UUID="d7ae0241-b948-4f64-af38-35d4486426c2" /mnt/raid10           ext4    defaults        0 0
+
+
+$ mount -a
+$ lsblk
+$ mdadm --detail /dev/md0
+$ df -Th
