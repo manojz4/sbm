@@ -1,0 +1,61 @@
+conf
+vm  (install later)>version-other
+                  >processor-2
+                  >ram-16
+                  >NAT
+                  >NVMe
+Specify capacity-10gb
+right click vm(settings)
+cd/dvd>use iso image>browse>truenas iso
+---
+power on vm (process begins)
+-install/upgrade
+-enter 
+-space
+-set password(choice is yours)
+-boot via bios
+-ok
+-shutdown
+-add 2 extra hdd NVMe>10gb   **for raid 0,1 (2 hdd)**
+                                   raid 5   (3 hdd)
+                                   raid 10  (4 hdd)
+-power on
+let process complete
+-ip shown(http and https)
+-browser (enter the ip displayed)
+-truenas page appears
+login(root:cdac)
+
+-Storage=> pool =>create pool =>pooolname:  pool1 : select all disks : first arrow(->) : ok
+---
+-Sharing=> Block share>BaseName(change name after .org>.....)
+save it
+-enable service
+---
+Portals(in same tab)
+1.wizard(click)
+-name(anything)
+-extent type>file :path to event>(click on)pool1/....(put any name on dots)
+-file size>2gb
+2.portals
+create new> ip:0.0.0.0> next> next> submit
+---
+Initiator group
+manya name displayed
+-go to windows search (iscsi initiator )
+in configuration tab> copy initiator name
+-go to truenas chrome
+-initiators groups> click on 3 dots> edit> untick allow all
+-In (allowed initiators paste the initiator name)
+click on '+' icon
+save
+---
+iScsi initiator > discovery > discovery portal > put ip of vm > ok
+Go to           > targets : select target : connect : ok
+Go to disk manager > ok
+Final output (Disk will be added as disk 2 )
+unallocated disk > create simple volume(next,next)
+disk appears in this pc
+
+
+-
